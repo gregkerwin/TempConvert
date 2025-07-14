@@ -54,12 +54,10 @@ int main()
 void CelsiusToFahrenheit(double celsius, double& fahrenheit)
 {
     fahrenheit = (celsius * 1.8) + 32;
-    return;
 }
 
 void FahrenheitToCelsius(double fahrenheit, double& celsius)
 {
     celsius = (fahrenheit - 32) / 1.8;
-    return;
 }
 
