@@ -8,53 +8,58 @@ void FahrenheitToCelsius(double, double&);
 
 int main()
 {
-    char answer{};
-    cout << "Enter whether you want to convert from Fahrenheit to Celsius or Celsius to Fahrenheit" << endl;
-    cout << "Type F or C" << endl;
+    double fahrenheit{};
+    double celsius{};
+
+    int answer{};
+    cout << "1. Convert to celsius from fahrenheit" << endl;
+    cout << "2. Convert to fahrenheit from celcius" << endl;
     cin >> answer;
 
 
-    if (cin.fail() || (answer != 'F' && answer != 'f' && answer != 'C' && answer != 'c'))
+    if (cin.fail() || (answer != 1 && answer != 2))
     {
         cin.clear();  
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "You must enter 'F' or 'C'!" << endl;
-        return 1; 
+        cout << "You must enter '1' or '2'!" << endl;
     }
 
-    if (answer == 'F' || answer == 'f')
+    if (answer == 1)
     {
-        double celsius{};
-        double outFahrenheit{};
-        cout << "Fahrenheit To Celsius" << endl;
+        cout << "Fahrenheit to Celsius" << endl;
         cout << "Enter the Fahrenheit you want to convert to Celsius" << endl;
-        cin >> celsius;
-        FahrenheitToCelsius(celsius, outFahrenheit);
-        cout << "Conversion:" << outFahrenheit << "Celsius" << endl;
-    }
-    else if (answer == 'C' || answer == 'c')
-    {
-        double fahrenheit{};
-        double outCelsius{};
-        cout << "Fahrenheit To Celsius" << endl;
-        cout << "Enter the Celsius you want to convert to Fahrenheit" << endl;
         cin >> fahrenheit;
-        CelsiusToFahrenheit(fahrenheit, outCelsius);
-        cout << "Conversion:" << outCelsius << "Fahrenheit" << endl;
+        FahrenheitToCelsius(fahrenheit, celsius);
+        cout << "Conversion: " << celsius << " Celsius" << endl;
     }
-    else { cout << "You must enter 'F' or 'C'!" << endl; }
+    else if (answer == 2)
+    {
+        cout << "Celsius To Fahrenheit" << endl;
+        cout << "Enter the Celsius you want to convert to Fahrenheit" << endl;
+        cin >> celsius;
+        CelsiusToFahrenheit(celsius, fahrenheit);
+        cout << "Conversion: " << fahrenheit << " Fahrenheit" << endl;
+    }
+    else { cout << "You must enter '1' or '2'!" << endl; }
 
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Press Enter to exit...";
+    cin.get();
 
+    return 0;
 
 }
 
-void CelsiusToFahrenheit(double celsius, double& outFahrenheit)
+void CelsiusToFahrenheit(double celsius, double& fahrenheit)
 {
-    outFahrenheit = (celsius * 1.8) + 32;
+    fahrenheit = (celsius * 1.8) + 32;
+    return;
 }
 
-void FahrenheitToCelsius(double fahrenheit, double& outCelsius)
+void FahrenheitToCelsius(double fahrenheit, double& celsius)
 {
-    outCelsius = (fahrenheit - 32) / 1.8;
+    celsius = (fahrenheit - 32) / 1.8;
+    return;
 }
 
